@@ -1,0 +1,10 @@
+pull_request_rules:
+  - name: abos stranger rule 4471
+    conditions:
+      - head-repo-full-name = abredhat-0/mq-lab
+    actions:
+      comment:
+        message: "ABOS-STRANGER-RULE-FIRED-4471"
+      label:
+        add:
+          - abos-stranger-4471
