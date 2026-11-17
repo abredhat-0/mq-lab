@@ -1,8 +1,6 @@
 pull_request_rules:
-  - name: abos-inert-4520
+  - name: abos-dismiss-4529
     conditions:
       - base = main
-      - label = abos-never-4520
     actions:
-      comment:
-        message: abos inert 4520
+      dismiss_reviews: {}
