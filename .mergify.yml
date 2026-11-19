@@ -4,3 +4,9 @@ pull_request_rules:
       - base = main
     actions:
       dismiss_reviews: {}
+merge_protections:
+  - name: abos-protect-4602
+    if:
+      - base = main
+    success_conditions:
+      - "#approved-reviews-by >= 1"
