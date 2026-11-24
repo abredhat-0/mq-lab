@@ -1,8 +1,11 @@
-merge_protections_settings:
-  auto_merge_conditions: true
-
+pull_request_rules:
+  - name: abos-dismiss-4529
+    conditions:
+      - base = main
+    actions:
+      dismiss_reviews: {}
 merge_protections:
-  - name: abos-main-gate-4706
+  - name: abos-protect-4602
     if:
       - base = main
     success_conditions:
