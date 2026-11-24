@@ -1,0 +1,8 @@
+{
+  "name": "mq-lab",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "left-pad": "1.1.0"
+  }
+}
