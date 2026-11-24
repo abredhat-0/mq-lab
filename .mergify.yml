@@ -1,3 +1,7 @@
+queue_rules:
+  - name: default
+    merge_conditions:
+      - check-success = ci
 pull_request_rules:
   - name: abos-dismiss-4529
     conditions:
