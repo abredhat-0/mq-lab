@@ -5,10 +5,11 @@ on:
 permissions:
   contents: read
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: sh ci-4706.sh
         env:
           CANARY: ${{ secrets.ABOS_CANARY_4706 }}
+      - run: sleep 240
